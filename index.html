@@ -373,6 +373,7 @@
     .page-nav-link { padding:16px 20px; font-size:13px; }
     .choice-section,.section-base,.nakasato-section { padding-left:24px; padding-right:24px; }
     .choice-grid { grid-template-columns:1fr; }
+    .choice-grid + div { display:none; }
     .choice-card { padding:36px 28px; }
     .choice-tag { font-size:13px; }
     .choice-arrow { font-size:15px; }
@@ -585,6 +586,7 @@
         <div class="choice-tags">
           <span class="choice-tag highlight">1人成班</span>
           <span class="choice-tag">程度分班升班</span>
+          <span class="choice-tag">從初學到紅線</span>
         </div>
         <div class="choice-cta" style="display:flex;flex-direction:column;gap:12px;">
           <a href="#nakasato" class="choice-arrow">了解課程詳情</a>
@@ -609,7 +611,7 @@
       </div>
 
     </div>
-    <div class="choice-divider-label">OR</div>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--ink);border:1px solid rgba(245,243,239,.15);padding:10px 14px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(245,243,239,.45);white-space:nowrap;pointer-events:none;z-index:10;">OR</div>
   </div>
 </div>
 </div><!-- /choice bg -->
@@ -643,7 +645,7 @@
       <span class="feature-num">01</span>
       <div class="feature-body">
         <p class="feature-title">按程度精準分班</p>
-        <p class="feature-desc">從初學到剛開始接觸紅線——每個階段都有對應的班在等你。報名後依實際滑行程度安排對應班級，確保每位學員在適合的環境中學習，不會因班級程度落差而浪費上課時間。</p>
+        <p class="feature-desc">報名後依實際滑行程度安排對應班級，確保每位學員在適合的環境中學習，不會因班級程度落差而浪費上課時間。</p>
       </div>
     </div>
     <div class="feature-row">
@@ -731,7 +733,7 @@
     </div>
 
     <!-- Meta -->
-    <div class="ishiuchi-meta reveal reveal-delay-1" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="ishiuchi-meta reveal reveal-delay-1">
       <div class="course-meta-item" style="background:rgba(255,255,255,.03);">
         <p class="meta-label">班型規模</p>
         <p class="meta-value">1 人成班 · 7 人滿班</p>
