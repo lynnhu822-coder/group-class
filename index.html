@@ -82,7 +82,12 @@
 
   /* HERO */
   .hero { position:relative; height:85vh; min-height:600px; display:flex; align-items:flex-end; overflow:hidden; }
-  .hero-bg { position:absolute; inset:0; background-image:url('https://www.iski.com.tw/image/catalog/%E6%97%A5%E6%9C%AC%E9%9B%AA%E5%A0%B4/Yuzawa_banner.jpg'); background-size:cover; background-position:center; transform-origin:center; transition:transform .1s linear; }
+  .hero-bg { position:absolute; inset:0; background-image:url('https://www.iski.com.tw/image/catalog/%E6%97%A5%E6%9C%AC%E9%9B%AA%E5%A0%B4/landing%20page%202026/DSC01217.webp?_t=1780476032'); background-size:cover; background-position:center 30%; transform-origin:center; animation:heroBgEntry 1.2s ease forwards; }
+  @keyframes heroBgEntry {
+    0%   { transform:scale(1.0); filter:blur(6px); }
+    60%  { filter:blur(0px); }
+    100% { transform:scale(1.08); filter:blur(0px); }
+  }
   .hero-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(160deg,rgba(0,53,142,.25) 0%,transparent 45%),linear-gradient(to bottom,rgba(10,12,14,.45) 0%,rgba(10,12,14,.15) 35%,rgba(10,12,14,.88) 100%); }
   .hero-content { position:relative; z-index:2; padding:0 60px 80px; width:100%; max-width:1200px; margin:0 auto; }
   .hero-season-label { font-family:'Noto Serif JP',serif; font-size:12px; font-weight:300; letter-spacing:5px; color:var(--ice); opacity:.85; margin-bottom:18px; display:flex; align-items:center; gap:16px; animation:fadeUp 1s ease .2s both; }
@@ -417,6 +422,7 @@
     .time-slot-card-value { font-size:11px; }
     .nakasato-cta,.ishiuchi-cta { flex-direction:column; align-items:flex-start; }
     .btn-primary,.btn-ghost,.btn-danger,.btn-ghost-white,.btn-messenger,.btn-buy { width:100%; justify-content:center; text-align:center; }
+    .hero-actions .btn-primary,.hero-actions .btn-ghost { width:auto; }
     .meta-note { font-size:14px; line-height:2.1; }
     .level-upgrade-hint { font-size:14px; line-height:2.1; }
     .choice-tag { font-size:14px; line-height:2.1; }
@@ -500,7 +506,7 @@
       GROUP<br>
       <span class="accent">CLASS</span>
     </h1>
-    <p class="hero-title-jp">越後湯沢　グループレッスン</p>
+    <p class="hero-title-jp">越後湯澤　團體滑雪課</p>
     <div class="hero-actions">
       <a href="#nakasato" class="btn-primary">了解課程詳情</a>
       <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" target="_blank" class="btn-ghost">立即購課</a>
@@ -570,14 +576,14 @@
     <p class="section-heading-jp">あ　な　た　に　合　っ　た　ク　ラ　ス　へ</p>
   </div>
 
-  <div style="position:relative;">
+  <div style="position:relative;display:flex;flex-direction:column;gap:0;">
     <div class="choice-grid reveal reveal-delay-1">
 
       <!-- 湯澤中里 -->
       <div class="choice-card primary">
         <span class="choice-badge open">常態開班 · 每日</span>
         <p class="choice-area"><span style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:rgba(245,243,239,.75);letter-spacing:3px;">湯澤中里</span><span style="font-size:10px;letter-spacing:3px;color:rgba(245,243,239,.38);margin-left:10px;">YUZAWA NAKASATO</span></p>
-        <h3 class="choice-title">常態<br>團體課</h3>
+        <h3 class="choice-title">常態<br>團體班</h3>
         <div class="choice-tags">
           <span class="choice-tag highlight">1人成班</span>
           <span class="choice-tag">程度分班升班</span>
@@ -607,7 +613,9 @@
       </div>
 
     </div>
-    <div class="choice-divider-label">OR</div>
+    <div style="display:flex;justify-content:center;align-items:center;padding:0;margin:0;position:relative;height:0;">
+      <div style="position:absolute;top:0;transform:translateY(-50%);background:var(--ink);border:1px solid rgba(245,243,239,.15);padding:8px 12px;font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(245,243,239,.45);z-index:10;">OR</div>
+    </div>
   </div>
 </div>
 </div><!-- /choice bg -->
@@ -617,7 +625,7 @@
 ════════════════════════════════════ -->
 <section class="nakasato-section" id="nakasato">
   <div class="reveal">
-    <p class="section-eyebrow">湯澤中里 · 常態團體班</p>
+    <p class="section-eyebrow">湯澤中里</p>
     <h2 class="section-heading">YUZAWA NAKASATO</h2>
     <p class="section-heading-jp">常　態　團　體　課　程</p>
   </div>
@@ -983,7 +991,7 @@
   // Parallax hero
   window.addEventListener('scroll',()=>{
     const bg = document.getElementById('heroBg');
-    if(bg) bg.style.transform=`translateY(${window.scrollY*.3}px) scale(1.1)`;
+    if(bg) bg.style.transform=`translateY(${window.scrollY*.3}px) scale(1.08)`;
   });
 </script>
 </body>
