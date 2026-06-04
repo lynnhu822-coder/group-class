@@ -44,15 +44,41 @@
   .cursor { position:fixed; width:8px; height:8px; background:var(--snow); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform .1s ease; mix-blend-mode:difference; }
   .cursor-ring { position:fixed; width:32px; height:32px; border:1px solid rgba(245,243,239,.4); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all .15s ease; mix-blend-mode:difference; }
 
+  /* COUNTDOWN BAR */
+  .countdown-bar {
+    position:fixed; top:0; left:0; right:0; z-index:102;
+    background:var(--yellow);
+    border-bottom:1px solid rgba(0,0,0,.08);
+    height:36px; display:flex; align-items:center; justify-content:center; gap:16px;
+    font-family:'Noto Sans TC',sans-serif; font-size:11px; letter-spacing:1.5px; color:rgba(0,0,0,.7);
+  }
+  .countdown-bar-nums { display:flex; align-items:center; gap:6px; }
+  .countdown-bar-num { font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--ink); letter-spacing:1px; min-width:22px; text-align:center; }
+  .countdown-bar-sep { color:rgba(0,0,0,.3); font-size:13px; }
+  .countdown-bar-label { font-size:9px; color:rgba(0,0,0,.45); letter-spacing:1px; }
+
   /* NAV */
-  nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:24px 48px; display:flex; justify-content:space-between; align-items:center; }
+  nav { position:fixed; top:36px; left:0; right:0; z-index:100; padding:24px 48px; display:flex; justify-content:space-between; align-items:center; }
   nav::before { content:''; position:absolute; inset:0; background:linear-gradient(to bottom,rgba(44,53,64,.9) 0%,transparent 100%); pointer-events:none; }
   .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:4px; color:var(--snow); text-decoration:none; position:relative; z-index:1; }
   .nav-links { display:flex; gap:32px; list-style:none; position:relative; z-index:1; }
   .nav-links a { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(245,243,239,.75); text-decoration:none; transition:color .3s; }
   .nav-links a:hover { color:var(--snow); }
-  .nav-cta { position:relative; z-index:1; font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:3px; color:var(--snow); border:1px solid rgba(245,243,239,.35); padding:10px 22px; text-decoration:none; transition:all .3s; }
-  .nav-cta:hover { background:var(--brand); border-color:var(--brand); }
+
+  /* HAMBURGER */
+  .hamburger-btn { display:flex; position:relative; z-index:1; background:none; border:none; cursor:pointer; padding:4px; flex-direction:column; gap:5px; }
+  .hamburger-btn span { display:block; width:22px; height:1.5px; background:var(--snow); transition:all .3s; }
+  .hamburger-btn.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+  .hamburger-btn.open span:nth-child(2) { opacity:0; }
+  .hamburger-btn.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+  .mobile-menu { display:none; position:fixed; inset:0; z-index:99; background:rgba(26,28,30,.97); backdrop-filter:blur(12px); flex-direction:column; padding:100px 32px 48px; gap:0; overflow-y:auto; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu-section { border-bottom:1px solid rgba(245,243,239,.08); padding:20px 0; }
+  .mobile-menu-label { font-size:9px; letter-spacing:3px; color:rgba(245,243,239,.3); text-transform:uppercase; margin-bottom:12px; }
+  .mobile-menu-link { display:flex; justify-content:space-between; align-items:center; font-family:'Noto Sans TC',sans-serif; font-size:18px; font-weight:300; letter-spacing:2px; color:rgba(245,243,239,.85); text-decoration:none; padding:10px 0; transition:color .2s; }
+  .mobile-menu-link:hover { color:var(--yellow); }
+  .mobile-menu-link::after { content:'→'; font-size:14px; opacity:.4; }
+  .mobile-menu-cta { margin-top:32px; display:block; background:var(--yellow); color:var(--ink); font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:4px; text-align:center; padding:18px; text-decoration:none; }
 
   /* HERO */
   .hero { position:relative; height:85vh; min-height:600px; display:flex; align-items:flex-end; overflow:hidden; }
@@ -119,7 +145,7 @@
   .choice-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,5vw,68px); letter-spacing:2px; line-height:1; color:var(--snow); margin-bottom:6px; position:relative; z-index:1; }
   .choice-title-zh { font-family:'Shippori Mincho',serif; font-size:16px; font-weight:700; letter-spacing:4px; color:rgba(245,243,239,.72); margin-bottom:28px; position:relative; z-index:1; }
   .choice-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px; position:relative; z-index:1; }
-  .choice-tag { font-size:12px; letter-spacing:1.5px; color:rgba(245,243,239,.65); border:1px solid rgba(245,243,239,.22); padding:5px 12px; }
+  .choice-tag { font-size:13px; letter-spacing:1.5px; color:rgba(245,243,239,.65); border:1px solid rgba(245,243,239,.22); padding:5px 12px; }
   .choice-tag.highlight { border-color:rgba(212,245,60,.45); color:var(--yellow); }
   .choice-cta { margin-top:auto; position:relative; z-index:1; }
   .choice-arrow { font-family:'Bebas Neue',sans-serif; font-size:14px; letter-spacing:3px; color:var(--ice); text-decoration:none; display:inline-flex; align-items:center; gap:10px; transition:gap .3s; }
@@ -134,7 +160,7 @@
   .meta-label { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--mist); margin-bottom:8px; }
   .meta-value { font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--snow); letter-spacing:1px; line-height:1.5; }
   .meta-value .accent-blue { color:var(--ice); }
-  .meta-note { font-size:13px; color:rgba(245,243,239,.45); margin-top:6px; letter-spacing:.5px; line-height:1.7; }
+  .meta-note { font-size:14px; color:rgba(245,243,239,.45); margin-top:6px; letter-spacing:.5px; line-height:1.7; }
 
   /* FEATURE ROWS */
   .feature-list { display:flex; flex-direction:column; gap:2px; margin-bottom:2px; }
@@ -176,12 +202,12 @@
   .level-border-green  { border:1px solid rgba(61,184,122,.25); background:rgba(61,184,122,.04); }
   .level-border-blue   { border:1px solid rgba(46,123,230,.25); background:rgba(46,123,230,.06); }
   .level-border-red    { border:1px solid rgba(224,61,61,.25); background:rgba(224,61,61,.06); }
-  .level-upgrade-hint { font-size:12px; letter-spacing:1.5px; color:rgba(245,243,239,.38); line-height:1.7; padding:0 24px 20px; }
+  .level-upgrade-hint { font-size:13px; letter-spacing:1.5px; color:rgba(245,243,239,.38); line-height:1.7; padding:0 24px 20px; }
 
   /* AGE NOTICE */
   .age-notice { border:1px solid rgba(212,245,60,.25); background:rgba(212,245,60,.04); padding:28px 36px; display:flex; gap:20px; align-items:flex-start; margin-bottom:2px; }
   .age-icon { font-family:'Bebas Neue',sans-serif; font-size:11px; letter-spacing:2px; color:var(--yellow); white-space:nowrap; padding-top:2px; flex-shrink:0; }
-  .age-text { font-size:15px; color:rgba(245,243,239,.72); line-height:2; letter-spacing:.5px; }
+  .age-text { font-size:15px; color:rgba(245,243,239,.72); line-height:1.9; letter-spacing:.5px; }
   .age-text strong { color:var(--snow); font-weight:700; }
 
   /* DATE BAR */
@@ -205,7 +231,7 @@
   .ishiuchi-new-flag::before { content:'★'; font-size:9px; }
   .ishiuchi-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,7vw,100px); letter-spacing:2px; line-height:.92; color:var(--snow); margin-bottom:8px; }
   .ishiuchi-title-zh { font-family:'Shippori Mincho',serif; font-size:14px; font-weight:400; letter-spacing:6px; color:rgba(245,243,239,.52); margin-bottom:28px; }
-  .ishiuchi-desc { font-size:16px; font-weight:400; color:rgba(245,243,239,.75); line-height:2.2; letter-spacing:.5px; }
+  .ishiuchi-desc { font-size:16px; font-weight:400; color:rgba(245,243,239,.75); line-height:1.9; letter-spacing:.5px; }
 
   /* Ishiuchi right: photo */
   .ishiuchi-photo { position:relative; height:360px; overflow:hidden; }
@@ -254,7 +280,7 @@
   .help-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(0,53,142,.14) 0%,transparent 70%); pointer-events:none; }
   .help-jp { font-family:'Shippori Mincho',serif; font-size:15px; letter-spacing:8px; color:rgba(245,243,239,.5); margin-bottom:16px; position:relative; z-index:1; }
   .help-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,6vw,80px); letter-spacing:3px; line-height:1; color:var(--snow); margin-bottom:12px; position:relative; z-index:1; }
-  .help-sub { font-size:16px; color:rgba(245,243,239,.65); letter-spacing:.5px; line-height:2.2; margin-bottom:44px; position:relative; z-index:1; max-width:560px; margin-left:auto; margin-right:auto; }
+  .help-sub { font-size:16px; color:rgba(245,243,239,.65); letter-spacing:.5px; line-height:1.9; margin-bottom:44px; position:relative; z-index:1; max-width:560px; margin-left:auto; margin-right:auto; }
   .help-cta-group { display:flex; gap:16px; justify-content:center; align-items:center; flex-wrap:wrap; position:relative; z-index:1; }
   .btn-messenger { font-family:'Bebas Neue',sans-serif; font-size:14px; letter-spacing:3px; background:#0084FF; color:#fff; padding:16px 36px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; transition:all .3s; border:1px solid #0084FF; }
   .btn-messenger:hover { background:transparent; color:#0084FF; }
@@ -270,7 +296,7 @@
   .select-banner-left {}
   .select-banner-tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(245,243,239,.52); margin-bottom:10px; }
   .select-banner-title { font-family:'Shippori Mincho',serif; font-size:26px; font-weight:700; color:var(--snow); letter-spacing:2px; margin-bottom:8px; }
-  .select-banner-desc { font-size:15px; color:rgba(245,243,239,.6); letter-spacing:.5px; line-height:1.8; }
+  .select-banner-desc { font-size:15px; color:rgba(245,243,239,.6); letter-spacing:.5px; line-height:1.9; }
   .select-banner-link { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:3px; color:var(--ice); text-decoration:none; display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(200,218,234,.3); padding:13px 24px; transition:all .3s; flex-shrink:0; }
   .select-banner-link:hover { border-color:var(--ice); color:#fff; }
   .select-banner-link::after { content:'↗'; }
@@ -309,28 +335,32 @@
   .suit-checks { display:flex; flex-direction:column; gap:14px; margin-top:32px; }
   .suit-check { display:flex; gap:14px; align-items:flex-start; }
   .suit-check-mark { font-family:'Bebas Neue',sans-serif; font-size:13px; color:var(--yellow); flex-shrink:0; padding-top:2px; }
-  .suit-check-text { font-size:15px; color:rgba(245,243,239,.78); line-height:1.8; letter-spacing:.4px; }
+  .suit-check-text { font-size:15px; color:rgba(245,243,239,.78); line-height:1.9; letter-spacing:.4px; }
   .suit-right {}
-  .suit-note { margin-top:32px; padding:24px 28px; background:rgba(0,53,142,.15); border:1px solid rgba(0,53,142,.35); font-size:15px; color:rgba(245,243,239,.72); line-height:2; letter-spacing:.4px; }
+  .suit-note { margin-top:32px; padding:24px 28px; background:rgba(0,53,142,.15); border:1px solid rgba(0,53,142,.35); font-size:15px; color:rgba(245,243,239,.72); line-height:1.9; letter-spacing:.4px; }
   .suit-note strong { color:var(--snow); }
 
   /* TIME SLOTS */
-  .time-slots { margin-top:16px; display:flex; flex-direction:column; gap:2px; }
-  .time-slots-header { padding:14px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid rgba(245,243,239,.08); margin-bottom:2px; }
+  .time-slots { margin-top:16px; }
+  .time-slots-header { padding:14px 0; display:flex; align-items:baseline; gap:12px; margin-bottom:12px; }
   .time-slots-title { font-family:'Shippori Mincho',serif; font-size:14px; font-weight:700; color:var(--snow); letter-spacing:1px; }
   .time-slots-note { font-size:11px; color:rgba(245,243,239,.55); letter-spacing:1.5px; }
-  .time-slot-row { display:grid; grid-template-columns:60px 1fr; align-items:center; gap:0; background:rgba(255,255,255,.04); border:1px solid rgba(245,243,239,.08); }
-  .time-slot-label { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:2px; color:var(--snow); padding:16px 20px; border-right:1px solid rgba(245,243,239,.08); text-align:center; }
-  .time-slot-value { font-size:15px; color:rgba(245,243,239,.72); padding:16px 20px; letter-spacing:.5px; }
-  .time-slot-row.slot-c { opacity:.6; }
+  .time-slot-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+  .time-slot-card { background:rgba(255,255,255,.04); border:1px solid rgba(245,243,239,.08); padding:20px 16px; display:flex; flex-direction:column; gap:8px; align-items:center; }
+  .time-slot-card-label { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; color:var(--snow); }
+  .time-slot-card-value { font-size:12px; color:rgba(245,243,239,.65); letter-spacing:.5px; text-align:center; }
 
   @media(max-width:768px){
     .suit-inner { grid-template-columns:1fr; gap:40px; }
     .suit-section { padding:0; }
   }
   @media(max-width:768px){
-    nav { padding:20px 24px; }
-    .nav-links,.nav-cta { display:none; }
+    .countdown-bar { top:0; z-index:102; }
+    nav { top:36px; padding:20px 24px; }
+    .nav-links { display:none; }
+    .cursor,.cursor-ring { display:none; }
+    body { cursor:auto; }
+    .choice-card,.floating-messenger { cursor:pointer; }
     .hero-content { padding:0 24px 60px; }
     .scroll-hint { right:24px; }
     .page-nav { padding:0 24px; overflow-x:auto; }
@@ -375,11 +405,30 @@
     .footer-links { display:none; }
     .help-section { padding:64px 24px; }
     .help-sub { font-size:16px; }
-    .date-bar { flex-direction:column; gap:12px; align-items:flex-start; }
-    .ishiuchi-date-bar { flex-direction:column; gap:12px; align-items:flex-start; }
+    .date-bar { flex-direction:column; gap:8px; align-items:flex-start; padding:20px 24px; }
+    .date-bar-value { font-size:18px; }
+    .date-bar-sep { display:none; }
+    .date-bar-label { margin-bottom:4px; }
+    .ishiuchi-date-bar { flex-direction:column; gap:8px; align-items:flex-start; padding:20px 24px; }
+    .ishiuchi-date-value { font-size:18px; }
+    .ishiuchi-date-sep { display:none; }
+    .time-slots-header { flex-direction:column; align-items:flex-start; gap:4px; }
+    .time-slots-note { font-size:10px; }
+    .time-slot-card-value { font-size:11px; }
     .nakasato-cta,.ishiuchi-cta { flex-direction:column; align-items:flex-start; }
     .btn-primary,.btn-ghost,.btn-danger,.btn-ghost-white,.btn-messenger,.btn-buy { width:100%; justify-content:center; text-align:center; }
-    .time-slots-header { flex-direction:column; align-items:flex-start; gap:6px; }
+    .meta-note { font-size:14px; line-height:2.1; }
+    .level-upgrade-hint { font-size:14px; line-height:2.1; }
+    .choice-tag { font-size:14px; line-height:2.1; }
+    .ishiuchi-date-note { font-size:14px; line-height:2.1; }
+    .age-text { font-size:16px; line-height:2.1; }
+    .feature-desc { font-size:16px; line-height:2.1; }
+    .suit-check-text { font-size:16px; line-height:2.1; }
+    .suit-note { font-size:16px; line-height:2.1; }
+    .ishiuchi-desc { font-size:16px; line-height:2.1; }
+    .help-sub { font-size:16px; line-height:2.1; }
+    .threshold-sub { font-size:15px; line-height:2.1; }
+    .threshold-video-note { font-size:15px; line-height:2.1; }
   }
 </style>
 </head>
@@ -388,17 +437,57 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar" id="countdownBar">
+  <span>超超早鳥</span>
+  <div class="countdown-bar-nums">
+    <span class="countdown-bar-num" id="cbDays">--</span><span class="countdown-bar-label">天</span>
+    <span class="countdown-bar-sep">:</span>
+    <span class="countdown-bar-num" id="cbHours">--</span><span class="countdown-bar-label">時</span>
+    <span class="countdown-bar-sep">:</span>
+    <span class="countdown-bar-num" id="cbMins">--</span><span class="countdown-bar-label">分</span>
+    <span class="countdown-bar-sep">:</span>
+    <span class="countdown-bar-num" id="cbSecs">--</span><span class="countdown-bar-label">秒</span>
+  </div>
+  <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" target="_blank" style="font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:var(--ink);text-decoration:none;border:1px solid rgba(0,0,0,.3);padding:3px 12px;transition:background .2s;" onmouseover="this.style.background='rgba(0,0,0,.08)'" onmouseout="this.style.background='transparent'">立即報名 →</a>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-section">
+    <p class="mobile-menu-label">越後湯澤</p>
+    <a href="https://www.iski.com.tw/ski-school/yuzawa&category=private" class="mobile-menu-link">越後湯澤私人課</a>
+  </div>
+  <div class="mobile-menu-section">
+    <p class="mobile-menu-label">雪場課程頁</p>
+    <a href="#" class="mobile-menu-link">越後湯澤</a>
+    <a href="#" class="mobile-menu-link">北海道手稻</a>
+    <a href="#" class="mobile-menu-link">藏王</a>
+    <a href="#" class="mobile-menu-link">留壽都</a>
+    <a href="https://www.iski.com.tw/ski-school/camp" target="_blank" class="mobile-menu-link">Camp 課程</a>
+  </div>
+  <div class="mobile-menu-section">
+    <p class="mobile-menu-label">服務</p>
+    <a href="#" class="mobile-menu-link">日本雪具租借&amp;倉儲</a>
+    <a href="#" class="mobile-menu-link">台灣滑雪課程</a>
+    <a href="https://www.iski.com.tw/login" target="_blank" class="mobile-menu-link">會員中心</a>
+  </div>
+  <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" class="mobile-menu-cta" target="_blank">立即報名 →</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <a href="https://www.iski.com.tw/ski-school" class="nav-logo">
     <img src="https://stage.iski.com.tw/image/catalog/snowing/01.home/link/M/M_Website_home logo01.png" alt="iSKI" style="height:28px;width:auto;display:block;">
   </a>
   <ul class="nav-links">
-    <li><a href="#nakasato">中里｜常態團體課</a></li>
+    <li><a href="#nakasato">湯澤中里｜常態團體班</a></li>
     <li><a href="#ishiuchi">石打丸山｜全山進階班</a></li>
     <li><a href="https://m.me/iski.tw" target="_blank">諮詢</a></li>
   </ul>
-  <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" class="nav-cta" target="_blank">立即報名</a>
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="選單" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -413,13 +502,9 @@
     </h1>
     <p class="hero-title-jp">越後湯沢　グループレッスン</p>
     <div class="hero-actions">
-      <a href="#nakasato" class="btn-primary">中里常態團體課</a>
-      <a href="#ishiuchi" class="btn-ghost">石打丸山全山進階班</a>
+      <a href="#nakasato" class="btn-primary">了解課程詳情</a>
+      <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" target="_blank" class="btn-ghost">立即購課</a>
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>scroll</span>
   </div>
 </section>
 
@@ -428,27 +513,18 @@
   <div class="marquee-track">
     <span class="marquee-item">YUZAWA NIIGATA</span>
     <span class="marquee-item">GROUP CLASS</span>
-    <span class="marquee-item">中里常態團體課</span>
+    <span class="marquee-item">湯澤中里常態團體班</span>
     <span class="marquee-item">石打丸山進階班</span>
     <span class="marquee-item">1人成班 7人滿班</span>
     <span class="marquee-item">程度分班</span>
     <span class="marquee-item">26/27 SEASON</span>
     <span class="marquee-item">YUZAWA NIIGATA</span>
     <span class="marquee-item">GROUP CLASS</span>
-    <span class="marquee-item">中里常態團體課</span>
+    <span class="marquee-item">湯澤中里常態團體班</span>
     <span class="marquee-item">石打丸山進階班</span>
     <span class="marquee-item">1人成班 7人滿班</span>
     <span class="marquee-item">程度分班</span>
     <span class="marquee-item">26/27 SEASON</span>
-  </div>
-</div>
-
-<!-- PAGE NAV -->
-<div class="page-nav">
-  <div class="page-nav-inner">
-    <a href="https://www.iski.com.tw/ski-school/yuzawa" class="page-nav-link">越後湯澤介紹</a>
-    <a href="https://www.iski.com.tw/ski-school/yuzawa&category=private" class="page-nav-link">越後湯澤私人課</a>
-    <a href="https://www.iski-select.com.tw/pages/rental" class="page-nav-link external" target="_blank">雪物嚴選租賃</a>
   </div>
 </div>
 
@@ -497,18 +573,19 @@
   <div style="position:relative;">
     <div class="choice-grid reveal reveal-delay-1">
 
-      <!-- 中里 -->
+      <!-- 湯澤中里 -->
       <div class="choice-card primary">
         <span class="choice-badge open">常態開班 · 每日</span>
-        <p class="choice-area"><span style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:rgba(245,243,239,.75);letter-spacing:3px;">中里</span><span style="font-size:10px;letter-spacing:3px;color:rgba(245,243,239,.38);margin-left:10px;">NAKASATO</span></p>
+        <p class="choice-area"><span style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:rgba(245,243,239,.75);letter-spacing:3px;">湯澤中里</span><span style="font-size:10px;letter-spacing:3px;color:rgba(245,243,239,.38);margin-left:10px;">YUZAWA NAKASATO</span></p>
         <h3 class="choice-title">常態<br>團體課</h3>
         <div class="choice-tags">
           <span class="choice-tag highlight">1人成班</span>
           <span class="choice-tag">程度分班升班</span>
           <span class="choice-tag">2027/1/4 開始</span>
         </div>
-        <div class="choice-cta">
+        <div class="choice-cta" style="display:flex;flex-direction:column;gap:12px;">
           <a href="#nakasato" class="choice-arrow">了解課程詳情</a>
+          <a href="https://www.iski.com.tw/yuzawa/nakazato-guide" target="_blank" class="choice-arrow">了解雪場</a>
         </div>
       </div>
 
@@ -523,8 +600,9 @@
           <span class="choice-tag">有程度門檻</span>
           <span class="choice-tag">2027/1/18 開始</span>
         </div>
-        <div class="choice-cta">
+        <div class="choice-cta" style="display:flex;flex-direction:column;gap:12px;">
           <a href="#ishiuchi" class="choice-arrow">了解課程詳情</a>
+          <a href="https://www.iski.com.tw/yuzawa/ishuchi-guide" target="_blank" class="choice-arrow">了解雪場</a>
         </div>
       </div>
 
@@ -539,8 +617,8 @@
 ════════════════════════════════════ -->
 <section class="nakasato-section" id="nakasato">
   <div class="reveal">
-    <p class="section-eyebrow">中里 · 常態團體課</p>
-    <h2 class="section-heading">NAKASATO<br>GROUP CLASS</h2>
+    <p class="section-eyebrow">湯澤中里 · 常態團體班</p>
+    <h2 class="section-heading">YUZAWA NAKASATO</h2>
     <p class="section-heading-jp">常　態　團　體　課　程</p>
   </div>
 
@@ -582,51 +660,6 @@
 
   </div>
 
-  <!-- Level Flow -->
-  <div class="level-flow-wrap reveal reveal-delay-3">
-    <p class="level-flow-label">課程等級 · Level Flow</p>
-    <div class="level-flow">
-      <div class="level-item">
-        <div class="level-block level-border-yellow">
-          <div class="level-color-bar yellow"></div>
-          <div class="level-dot yellow"></div>
-          <p class="level-name-en">YELLOW</p>
-          <p class="level-name-zh">黃　班</p>
-        </div>
-        <p class="level-upgrade-hint">達標後 → 升綠班</p>
-      </div>
-      <div class="level-item">
-        <div class="level-block level-border-green">
-          <div class="level-color-bar green"></div>
-          <div class="level-dot green"></div>
-          <p class="level-name-en">GREEN</p>
-          <p class="level-name-zh">綠　班</p>
-        </div>
-        <p class="level-upgrade-hint">達標後 → 升藍班</p>
-      </div>
-      <div class="level-item">
-        <div class="level-block level-border-blue">
-          <div class="level-color-bar blue"></div>
-          <div class="level-dot blue"></div>
-          <p class="level-name-en">BLUE</p>
-          <p class="level-name-zh">藍　班</p>
-        </div>
-        <p class="level-upgrade-hint">達標後 → 升紅班</p>
-      </div>
-      <div class="level-item">
-        <div class="level-block level-border-red">
-          <div class="level-color-bar red"></div>
-          <div class="level-dot red"></div>
-          <p class="level-name-en">RED</p>
-          <p class="level-name-zh">紅　班</p>
-        </div>
-        <p class="level-upgrade-hint">進階目標達成</p>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(245,243,239,.08);margin-top:32px;padding-top:24px;text-align:center;">
-      <p style="font-size:12px;color:rgba(245,243,239,.45);letter-spacing:.5px;">不確定自己是哪個等級？報名時告訴我們，我們幫你判斷。</p>
-    </div>
-  </div>
 
   <!-- Age Notice -->
   <div class="age-notice reveal reveal-delay-2">
@@ -640,9 +673,7 @@
   <!-- Date Bar -->
   <div class="date-bar reveal reveal-delay-3">
     <p class="date-bar-label">開課期間</p>
-    <p class="date-bar-value">2027 / 01 / 04</p>
-    <div class="date-bar-sep"></div>
-    <p class="date-bar-value">2027 / 03 / 05</p>
+    <p class="date-bar-value">2027 / 01 / 04 — 2027 / 03 / 05</p>
     <div class="date-bar-sep"></div>
     <p class="meta-note" style="color:rgba(245,243,239,.52);font-size:12px;letter-spacing:.5px;">每日開班，含週末</p>
   </div>
@@ -651,19 +682,21 @@
   <div class="time-slots reveal reveal-delay-3">
     <div class="time-slots-header">
       <span class="time-slots-title">選擇你的上課時段</span>
-      <span class="time-slots-note">每堂 2 小時 · A / B / C 三時段彈性選擇</span>
+      <span class="time-slots-note">每堂 2 小時 · 彈性選擇</span>
     </div>
-    <div class="time-slot-row">
-      <span class="time-slot-label">A</span>
-      <span class="time-slot-value">09:00 — 11:00</span>
-    </div>
-    <div class="time-slot-row">
-      <span class="time-slot-label">B</span>
-      <span class="time-slot-value">11:30 — 13:30</span>
-    </div>
-    <div class="time-slot-row">
-      <span class="time-slot-label">C</span>
-      <span class="time-slot-value">14:30 — 16:30</span>
+    <div class="time-slot-grid">
+      <div class="time-slot-card">
+        <span class="time-slot-card-label">A</span>
+        <span class="time-slot-card-value">09:00 — 11:00</span>
+      </div>
+      <div class="time-slot-card">
+        <span class="time-slot-card-label">B</span>
+        <span class="time-slot-card-value">11:30 — 13:30</span>
+      </div>
+      <div class="time-slot-card">
+        <span class="time-slot-card-label">C</span>
+        <span class="time-slot-card-value">14:30 — 16:30</span>
+      </div>
     </div>
   </div>
 
@@ -675,7 +708,6 @@
     <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" target="_blank" class="btn-ghost">
       立即購課
     </a>
-    <span class="earlybird-inline">早鳥優惠進行中</span>
   </div>
 
 </section>
@@ -724,7 +756,7 @@
       <div class="course-meta-item" style="background:rgba(255,255,255,.03);">
         <p class="meta-label">課程性質</p>
         <p class="meta-value">全山進階</p>
-        <p class="meta-note">帶你挑戰更難的地形與技術</p>
+        <p class="meta-note">進階滑行、風格滑行</p>
       </div>
     </div>
 
@@ -750,9 +782,7 @@
     <!-- Date Bar -->
     <div class="ishiuchi-date-bar reveal reveal-delay-2">
       <p class="ishiuchi-date-label">開課期間</p>
-      <p class="ishiuchi-date-value">2027 / 01 / 18</p>
-      <div class="ishiuchi-date-sep"></div>
-      <p class="ishiuchi-date-value">2027 / 02 / 27</p>
+      <p class="ishiuchi-date-value">2027 / 01 / 18 — 2027 / 02 / 27</p>
       <div class="ishiuchi-date-sep"></div>
       <p class="ishiuchi-date-note">每週二、四、六開班　｜　非每日開放</p>
     </div>
@@ -761,15 +791,21 @@
     <div class="time-slots reveal reveal-delay-2">
       <div class="time-slots-header">
         <span class="time-slots-title">選擇你的上課時段</span>
-        <span class="time-slots-note">每堂 2 小時 · A / B 兩時段彈性選擇</span>
+        <span class="time-slots-note">每堂 2 小時 · 彈性選擇</span>
       </div>
-      <div class="time-slot-row">
-        <span class="time-slot-label">A</span>
-        <span class="time-slot-value">09:00 — 11:00</span>
-      </div>
-      <div class="time-slot-row">
-        <span class="time-slot-label">B</span>
-        <span class="time-slot-value">11:30 — 13:30</span>
+      <div class="time-slot-grid">
+        <div class="time-slot-card">
+          <span class="time-slot-card-label">A</span>
+          <span class="time-slot-card-value">09:00 — 11:00</span>
+        </div>
+        <div class="time-slot-card">
+          <span class="time-slot-card-label">B</span>
+          <span class="time-slot-card-value">11:30 — 13:30</span>
+        </div>
+        <div class="time-slot-card">
+          <span class="time-slot-card-label">C</span>
+          <span class="time-slot-card-value">14:30 — 16:30</span>
+        </div>
       </div>
     </div>
 
@@ -781,7 +817,6 @@
       <a href="https://www.iski.com.tw/index.php?route=common/snowing_buy" target="_blank" class="btn-ghost-white">
         立即購課 →
       </a>
-      <span class="earlybird-inline">早鳥優惠進行中</span>
     </div>
 
   </div>
@@ -862,6 +897,52 @@
 <a href="https://m.me/iski.tw" target="_blank" class="floating-messenger" title="聯絡客服">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.145 2 11.259c0 2.883 1.308 5.465 3.374 7.234V22l3.079-1.688c.822.226 1.693.347 2.547.347 5.523 0 10-4.145 10-9.259C22 6.145 17.523 2 12 2zm1.007 12.464l-2.548-2.715-4.97 2.715 5.467-5.799 2.61 2.715 4.908-2.715-5.467 5.799z"/></svg>
 </a>
+
+<script>
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // 倒數計時器 — 超超早鳥截止 2026/7/12 23:59:59 台灣時間
+  (function(){
+    const deadline = new Date('2026-07-12T23:59:59+08:00').getTime();
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick(){
+      const now = Date.now();
+      const diff = deadline - now;
+      if(diff <= 0){
+        const cb = document.getElementById('countdownBar');
+        if(cb) cb.style.display = 'none';
+        return;
+      }
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+      const cbDays  = document.getElementById('cbDays');
+      const cbHours = document.getElementById('cbHours');
+      const cbMins  = document.getElementById('cbMins');
+      const cbSecs  = document.getElementById('cbSecs');
+      if(cbDays)  cbDays.textContent  = days;
+      if(cbHours) cbHours.textContent = pad(hours);
+      if(cbMins)  cbMins.textContent  = pad(mins);
+      if(cbSecs)  cbSecs.textContent  = pad(secs);
+      setTimeout(tick, 1000);
+    }
+    tick();
+  })();
+</script>
 
 <script>
   // Cursor
